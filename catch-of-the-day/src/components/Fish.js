@@ -18,7 +18,7 @@ class Fish extends React.Component {
             </h3>
             <p>{desc}</p>
             <button disabled={!isAvailable} 
-            onClick={() => this.props.addToOrder(this.props)}>
+            onClick={() => this.props.addToOrder(this.props.index)}>
             {isAvailable ? "Add To Order" : "Sold Out!" }
             </button>
             </li>
