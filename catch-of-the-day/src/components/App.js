@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Header from "./Header";
 import Order from "./Order";
 import Inventory from "./Inventory";
@@ -11,6 +12,11 @@ class App extends React.Component{
         fishes: {},
         order:{}
     };
+
+    static propTypes = {
+        match: PropTypes.object
+    };
+
     componentDidMount() {
       const { params } = this.props.match;
       // first reinstate our Local Storage
@@ -86,7 +92,7 @@ class App extends React.Component{
         return (
             <div className="catch-of-the-day">
              <div className="menu">
-                <Header tagline="Fresh Seafood Market" />
+                <Header tagline="Fresh Seafood Market"/>
                  <ul className="fishes">
                     {Object.keys(this.state.fishes).map(key => (
                     <Fish 
@@ -109,6 +115,7 @@ class App extends React.Component{
                 loadSampleFishes={ this.loadSampleFishes}
                 fishes={this.state.fishes}
                 deleteFish={this.deleteFish}
+                storeId={this.props.match.params.storeId}
                 />
 
             </div>
